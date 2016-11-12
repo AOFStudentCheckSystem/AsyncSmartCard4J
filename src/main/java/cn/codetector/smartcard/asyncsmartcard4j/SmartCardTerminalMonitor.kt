@@ -2,15 +2,11 @@ package cn.codetector.smartcard.asyncsmartcard4j
 
 import java.util.*
 import javax.smartcardio.CardTerminal
-import javax.smartcardio.CardTerminals
 import javax.smartcardio.TerminalFactory
 
 class SmartCardTerminalMonitor constructor(val factory: TerminalFactory): Runnable{
     private val listenerList:MutableList<TerminalEventListener> = ArrayList<TerminalEventListener>();
-    private var cardTerminals:MutableList<CardTerminal> = ArrayList<CardTerminal>()
-    init {
-//        factory.terminals().waitForChange()
-    }
+    private val cardTerminals:MutableList<CardTerminal> = ArrayList<CardTerminal>()
 
     private fun compareTerminals(newTerminals: List<CardTerminal>): Boolean{
         var returnValue = true;
